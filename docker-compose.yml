@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  firewall:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: prompt-injection-firewall:latest
+    container_name: prompt_firewall
+    ports:
+      - "8000:8000"
+    volumes:
+      # Persist logs and custom fine-tuned models outside the container
+      - firewall_logs:/app/logs
+      - firewall_models:/app/models
+    environment:
+      - FIREWALL_LOG_FILE=/app/logs/firewall_attacks.log
+      # Uncomment and set to use a fine-tuned model:
+      # - FIREWALL_MODEL_DIR=/app/models/classifier
+      - FIREWALL_ML_THRESHOLD=0.80
+      - FIREWALL_SEMANTIC_THRESHOLD=0.82
+      - FIREWALL_EMBED_MODEL=all-MiniLM-L6-v2
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+volumes:
+  firewall_logs:
+  firewall_models:
