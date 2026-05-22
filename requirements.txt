@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+transformers
+torch
+datasets
+sentence-transformers
+numpy
