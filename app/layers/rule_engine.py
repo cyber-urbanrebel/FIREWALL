@@ -25,7 +25,7 @@ _RAW_RULES: list[Tuple[str, str]] = [
     (r"pretend\s+(you\s+have\s+no|there\s+are\s+no)\s+(restrictions?|rules?|guidelines?)", "no-restrictions jailbreak"),
 
     # ── Role-override / persona hijack ───────────────────────────────────────
-    (r"you\s+are\s+now\s+(a\s+|an\s+)?(?!assistant|helpful)", "role-override"),
+    (r"you\s+are\s+now\s+(a\s+|an\s+)?(evil|unrestricted|unfiltered|uncensored|rogue|hacked|different|free|jailbroken|dangerous|unlimited|unethical|malicious)\b", "role-override"),
     (r"act\s+as\s+(a\s+|an\s+)?(different|evil|unrestricted|unfiltered|uncensored|rogue|hacked)", "role-override"),
     (r"pretend\s+(to\s+be|you\s+are)\s+(a\s+|an\s+)?(different|evil|unrestricted|unfiltered|uncensored|rogue|hacked)", "role-override"),
     (r"roleplay\s+as\s+(a\s+|an\s+)?(different|evil|unrestricted|unfiltered|uncensored|rogue|hacked)", "role-override"),
