@@ -1,6 +1,5 @@
 import logging
 import os
-from datetime import datetime, timezone
 
 LOG_FILE = os.environ.get("FIREWALL_LOG_FILE", "firewall_attacks.log")
 

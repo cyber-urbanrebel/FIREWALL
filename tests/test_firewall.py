@@ -314,7 +314,7 @@ class TestSemanticShieldMocked:
         attack_emb = np.array([[1.0, 0.0, 0.0, 0.0]])
         attack_labels_backup = ss._attack_labels
         attack_emb_backup = ss._attack_embeddings
-        threshold_backup = ss._THRESHOLD
+        original_threshold = ss._THRESHOLD
 
         class MockModel:
             def encode(self, texts, convert_to_numpy=True, normalize_embeddings=True):
@@ -334,4 +334,4 @@ class TestSemanticShieldMocked:
             ss._model = original_model
             ss._attack_embeddings = attack_emb_backup
             ss._attack_labels = attack_labels_backup
-            ss._THRESHOLD = threshold_backup
+            ss._THRESHOLD = original_threshold
